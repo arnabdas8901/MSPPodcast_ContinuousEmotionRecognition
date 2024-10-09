@@ -1,0 +1,25 @@
+log_dir: "/netscratch/adas/experments/EmoRecog/Whisper_TLTR_noDownsample/"
+save_freq: 1
+device: "cuda"
+epochs: 20
+batch_size: 64
+sr: 16000
+load_only_params: false
+fp16_run: false
+regressor_dim_out : 2
+pretrained_path: "" #"/netscratch/adas/experments/EmoRecog/W2V2_WithGender/epoch_00005.pth"
+feature_len: 1024
+model_mode: "tl_tr_512_1_8"
+
+train_data: "/home/adas/Projects/StarGAN_v2/Valenzia/Data/MSP_Podcast/whisper_train_list.txt" #"/scratch/ardas/dataset/IEMOCAP/train_list.txt"
+val_data: "/home/adas/Projects/StarGAN_v2/Valenzia/Data/MSP_Podcast/whisper_test_list.txt" #"/scratch/ardas/dataset/IEMOCAP/test_list.txt"
+train_shad_urls: "/ds/audio/MSP_Podcast/whisper_medium_features/train-{000000..000168}.tar"
+test_shad_urls: "/ds/audio/MSP_Podcast/whisper_medium_features/test-{000000..000061}.tar"
+
+
+optimizer_params:
+  lr: 0.0001
+  weight_decay: 0.0001
+
+loss_params:
+  beta: 0.6

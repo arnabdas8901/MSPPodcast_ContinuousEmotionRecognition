@@ -1,0 +1,23 @@
+log_dir: "/netscratch/adas/experments/EmoRecog/Seamless_TLTR_noDownsample/"
+save_freq: 1
+device: "cuda"
+epochs: 50
+batch_size: 64
+sr: 16000
+load_only_params: false
+fp16_run: false
+regressor_dim_out : 2
+pretrained_path: ""
+feature_len: 1024
+model_mode: "tl_tr_512_1_8"
+
+train_shad_urls: "/ds/audio/MSP_Podcast/w2vec_bert_features/train-{000000..000168}.tar"
+test_shad_urls: "/ds/audio/MSP_Podcast/w2vec_bert_features/test-{000000..000061}.tar"
+
+
+optimizer_params:
+  lr: 0.0001
+  weight_decay: 0.0001
+
+loss_params:
+  beta: 0.6

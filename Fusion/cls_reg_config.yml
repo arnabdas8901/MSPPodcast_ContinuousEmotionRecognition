@@ -1,0 +1,37 @@
+log_dir: "/netscratch/adas/experments/EmoRecog/FusionClsReg_noDownsample_TLTR_Trainable_NoMixupLoss/"
+save_freq: 1
+device: "cuda"
+epochs: 50
+batch_size: 64
+sr: 16000
+load_only_params: false
+fp16_run: false
+regressor_dim_out : 2
+classifier_dim_out : 10
+feature_len: 1024
+model_mode: "tl_tr_512_1_8"
+
+train_shad_urls: "/ds/audio/MSP_Podcast/whisper_wavlm_w2v/train-{000000..000656}.tar"
+test_shad_urls: "/ds/audio/MSP_Podcast/whisper_wavlm_w2v/test-{000000..000239}.tar"
+
+whisper_pretrained_path: "/netscratch/adas/experments/EmoRecog/Whisper_TLTR_noDownsample/epoch_00008.pth"
+whisper_num_layers: 24
+
+wavlm_pretrained_path: "/netscratch/adas/experments/EmoRecog/WavLM_TLTR_noDownsample/epoch_00016.pth"
+wavlm_num_layers: 25
+
+w2v_pretrained_path: "/netscratch/adas/experments/EmoRecog/Seamless_TLTR_noDownsample/epoch_00039.pth"
+w2v_num_layers: 24
+
+
+optimizer_params:
+  lr: 0.00005
+  weight_decay: 0.0001
+
+loss_params:
+  beta: 0.6
+  use_mixup: false
+  mixup_prob: 0.25
+  lambda_mixup: 0.5
+  lambda_cls: 1.0
+  class_weights : [2, 2, 2, 1, 0.5, 2, 1, 0.2, 0.2, 0.1]
